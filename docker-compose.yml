@@ -1,0 +1,17 @@
+
+version: '3'
+volumes:
+  motion-server:
+  motion-storage:
+services:
+  motion-server:
+    image: frank3427/motion-arm64
+    container_name: motion
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - 'motion-server:/usr/local/etc/motion/'
+      - 'motion-storage:/var/lib/motion/'  
+    ports:
+      - '8080:8080'
+      - '8081:8081'
+    restart: always
